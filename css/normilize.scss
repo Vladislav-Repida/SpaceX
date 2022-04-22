@@ -1,0 +1,91 @@
+@function calcPX($f-min, $f-max, $v-min, $v-max) {
+    $k: ($f-max - $f-min)/($v-max - $v-min);
+    $b: $f-min - $k * $v-min;
+  
+    $b: $b * 1px;
+  
+    @return calc( #{$k} * 100vw + #{$b} );
+}
+::-webkit-scrollbar { width: 0;}
+:root{
+    --font-fam: 'Roboto', sans-serif;
+
+    --font-size: 16px;
+    --font-weigth-standart: 400;
+
+    /* Colors */
+    --black: #000;
+    --dark: #010001;
+    --dark-gray: #808080;
+    --gray: #B2B0B2;
+    --white: #fff;
+}
+*{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+
+    user-select: none;
+}
+html{   
+    font-size: var(--font-size);
+}
+body{
+    margin: 0;
+    font-family: var(--font-fam);
+    font-weight: var(--font-weigth-standart);
+    color: var(--white);
+    background-color: var(--dark);
+
+}
+body.no-scroll{
+    overflow: hidden;
+}
+img{
+    pointer-events: none;
+}
+.cursor{
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+
+    width: 100px;
+    height: 100px;
+
+    backdrop-filter: invert(100%);
+    border: solid 1px rgba(255, 255, 255, 0.274);
+    border-radius: 50%;
+    pointer-events: none;
+
+    transition: 0.2s;
+}
+p{
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+ul, ol{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+button, input{
+    font-family: var(--font-fam);
+}
+.container{
+    width: 1231px;
+    box-sizing: content-box;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 1280px) {
+    .container{
+        width: 90vw;
+    }
+}
